@@ -70,6 +70,12 @@ var EventHandlers = {
     if (this.state.animating) {
       return;
     }
+    
+    var swipeDirection = this.swipeDirection(this.state.touchObject);
+    if (swipDirection === 'vertical') { 
+      return; 
+    }
+
     var swipeLeft;
     var curLeft, positionOffset;
     var touchObject = this.state.touchObject;
@@ -86,7 +92,6 @@ var EventHandlers = {
 
     var currentSlide = this.state.currentSlide;
     var dotCount = Math.ceil(this.state.slideCount / this.props.slidesToScroll);
-    var swipeDirection = this.swipeDirection(this.state.touchObject);
     var touchSwipeLength = touchObject.swipeLength;
 
     if (this.props.infinite === false) {
